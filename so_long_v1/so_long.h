@@ -6,7 +6,7 @@
 /*   By: mhugueno <mhugueno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 08:56:27 by mhugueno          #+#    #+#             */
-/*   Updated: 2022/04/26 12:14:27 by mhugueno         ###   ########.fr       */
+/*   Updated: 2022/04/26 20:14:02 by mhugueno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,15 @@ typedef struct	s_program
 	int						frame;
 	t_sprite_template		background;
 	t_sprite_template		map;
+	t_sprite_template		platform;
+	t_sprite_template		left_wall;
+	t_sprite_template		right_wall;
+	t_sprite_template		upper_wall;
+	t_sprite_template		lower_wall;
+	t_sprite_template		upper_left_wall;
+	t_sprite_template		upper_right_wall;
+	t_sprite_template		lower_left_wall;
+	t_sprite_template		lower_right_wall;
 	t_sprite_template		iddle_1;
 	t_sprite_template		iddle_2;
 	t_sprite_template		iddle_3;
@@ -132,6 +141,14 @@ t_sprite	ft_new_sprite_run_4_left(void *, char *);
 t_sprite	ft_new_sprite_crouch(void *, char *);
 t_sprite	ft_new_sprite_fall(void *, char *);
 t_sprite	ft_new_sprite_item(void *, char *);
+t_sprite	ft_new_sprite_left_wall(void *, char *);
+t_sprite	ft_new_sprite_upper_left_wall(void *, char *);
+t_sprite	ft_new_sprite_lower_left_wall(void *, char *);
+t_sprite	ft_new_sprite_upper_wall(void *, char *);
+t_sprite	ft_new_sprite_right_wall(void *, char *);
+t_sprite	ft_new_sprite_upper_right_wall(void *, char *);
+t_sprite	ft_new_sprite_lower_right_wall(void *, char *);
+t_sprite	ft_new_sprite_lower_wall(void *, char *);
 int			ft_check_right(t_program *);
 int			ft_check_left(t_program *);
 int			ft_update(void *);
@@ -145,6 +162,14 @@ void		ft_iddle_6(t_program *);
 void		ft_iddle_7(t_program *);
 void		ft_iddle_8(t_program *);
 void		ft_map(t_program *);
+void		ft_left_wall(t_program *);
+void		ft_upper_left_wall(t_program *);
+void		ft_lower_left_wall(t_program *);
+void		ft_upper_wall(t_program *);
+void		ft_right_wall(t_program *);
+void		ft_upper_right_wall(t_program *);
+void		ft_lower_right_wall(t_program *);
+void		ft_lower_wall(t_program *);
 void		ft_background(t_program *);
 void		ft_run_1_right(t_program *);
 void		ft_run_2_right(t_program *);
@@ -164,5 +189,7 @@ void		ft_animation_run_right(int, t_program *);
 void		ft_animation_run_left(int, t_program *);
 void		ft_check_map_error_upper_wall(t_program *);
 void		ft_printf_count(t_program *);
+void		render_upper_map(int,t_program *);
+void		render_middle_map(int, t_program *);
 
 #endif

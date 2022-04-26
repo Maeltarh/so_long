@@ -6,36 +6,11 @@
 /*   By: mhugueno <mhugueno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 10:41:24 by mhugueno          #+#    #+#             */
-/*   Updated: 2022/04/26 12:16:22 by mhugueno         ###   ########.fr       */
+/*   Updated: 2022/04/26 20:23:02 by mhugueno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-
-void	render_map(int i,t_program *program)
-{
-	while (program->map_str[i] != '\0')
-	{
-		while (program->map.sprite_position.x <= program->window.size.x)
-		{
-			if (program->map_str[i] == 49)
-			{
-				mlx_put_image_to_window(program->mlx, program->window.reference, program->map.sprite.reference,
-					program->map.sprite_position.x, program->map.sprite_position.y);
-			}
-			if (program->map_str[i] == 67)
-			{
-				program->item.sprite_position.x = program->map.sprite_position.x;
-				program->item.sprite_position.y = program->map.sprite_position.y;
-				ft_item(i, program);
-			}
-			program->map.sprite_position.x += 50;
-			i++;
-		}
-		program->map.sprite_position.x = 0;
-		program->map.sprite_position.y += 50;
-	}
-}
 
 void	ft_map(t_program *program)
 {

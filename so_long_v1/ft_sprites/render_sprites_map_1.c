@@ -5,41 +5,67 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhugueno <mhugueno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/26 19:31:45 by mhugueno          #+#    #+#             */
-/*   Updated: 2022/04/26 19:38:32 by mhugueno         ###   ########.fr       */
+/*   Created: 2022/04/19 10:41:24 by mhugueno          #+#    #+#             */
+/*   Updated: 2022/04/27 15:42:47 by mhugueno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	ft_left_wall(t_program *program)
+void	ft_map(t_program *program)
 {
+	int i;
 
-	program->left_wall.sprite = ft_new_sprite_left_wall(program->mlx, "./sprites/left_wall.xpm");
-	mlx_put_image_to_window(program->mlx, program->window.reference, program->left_wall.sprite.reference,
-		program->left_wall.sprite_position.x, program->left_wall.sprite_position.y);
+	i = 0;
+	program->map.sp_pos.x = 0;
+	program->map.sp_pos.y = 0;
+	ft_background(program);
+	program->map.sprite = ft_new_sprite_map(program->mlx, "./sprites/wall.xpm");
+	render_map(i, program);
 }
 
-void	ft_upper_left_wall(t_program *program)
+void	ft_item(int i, t_program *program)
 {
-
-	program->upper_left_wall.sprite = ft_new_sprite_upper_left_wall(program->mlx, "./sprites/upper_left_wall.xpm");
-	mlx_put_image_to_window(program->mlx, program->window.reference, program->upper_left_wall.sprite.reference,
-		program->upper_left_wall.sprite_position.x, program->upper_left_wall.sprite_position.y);
+	program->item.sp_pos.x = program->map.sp_pos.x;
+	program->item.sp_pos.y = program->map.sp_pos.y;
+	if (program->iddle_1.sp_pos.x != (program->item.sp_pos.x)||
+			program->iddle_1.sp_pos.y != program->item.sp_pos.y)
+	{
+		program->item.sprite = ft_new_sprite_item(program->mlx, "./sprites/item.xpm");
+		mlx_put_image_to_window(program->mlx, program->window.reference, program->item.sprite.reference,
+			program->item.sp_pos.x, program->item.sp_pos.y);
+	}
+	else
+	{
+		program->map_str[i] = '0';
+		program->count_int.item_count++;
+		ft_printf_count(program);
+	}
 }
 
-void	ft_lower_left_wall(t_program *program)
+void	ft_background(t_program *program)
 {
-
-	program->lower_left_wall.sprite = ft_new_sprite_lower_left_wall(program->mlx, "./sprites/lower_left_wall.xpm");
-	mlx_put_image_to_window(program->mlx, program->window.reference, program->lower_left_wall.sprite.reference,
-		program->lower_left_wall.sprite_position.x, program->lower_left_wall.sprite_position.y);
+	program->background.sp_pos.x = 0;
+	program->background.sp_pos.y = 0;
+	program->background.sprite = ft_new_sprite_background(program->mlx, "./sprites/background.xpm");
+	mlx_put_image_to_window(program->mlx, program->window.reference, program->background.sprite.reference,
+		program->background.sp_pos.x, program->background.sp_pos.y);
 }
 
-void	ft_upper_wall(t_program *program)
+void	ft_platform(t_program *program)
 {
+	program->platform.sp_pos.x = program->map.sp_pos.x;
+	program->platform.sp_pos.y = program->map.sp_pos.y;
+	program->platform.sprite = ft_new_sprite_platform(program->mlx, "./sprites/platform.xpm");
+	mlx_put_image_to_window(program->mlx, program->window.reference, program->platform.sprite.reference,
+		program->platform.sp_pos.x, program->platform.sp_pos.y);
+}
 
-	program->upper_wall.sprite = ft_new_sprite_upper_wall(program->mlx, "./sprites/upper_wall.xpm");
-	mlx_put_image_to_window(program->mlx, program->window.reference, program->upper_wall.sprite.reference,
-		program->upper_wall.sprite_position.x, program->upper_wall.sprite_position.y);
+void	ft_ladder(t_program *program)
+{
+	program->ladder.sp_pos.x = program->map.sp_pos.x;
+	program->ladder.sp_pos.y = program->map.sp_pos.y;
+	program->ladder.sprite = ft_new_sprite_ladder(program->mlx, "./sprites/ladder.xpm");
+	mlx_put_image_to_window(program->mlx, program->window.reference, program->ladder.sprite.reference,
+		program->ladder.sp_pos.x, program->ladder.sp_pos.y);
 }

@@ -6,7 +6,7 @@
 /*   By: mhugueno <mhugueno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 09:30:59 by mhugueno          #+#    #+#             */
-/*   Updated: 2022/04/26 12:15:32 by mhugueno         ###   ########.fr       */
+/*   Updated: 2022/04/27 16:17:36 by mhugueno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,8 @@ int	ft_input(int key, void *param)
 {
 	t_program	*program = (t_program *)param;
 
-	program->count_int.movement_count++;
-	ft_printf_count(program);
 	if (key == 53)
 		exit (0);
-	if (program->iddle_1.sprite_position.y < (program->window.size.y - 100))
-		return (0);
 	program->frame = 0;
 	if (key == 2 || key == 0)
 	{
@@ -30,17 +26,20 @@ int	ft_input(int key, void *param)
 	}
 	ft_map(program);
 	if (key == 13)
-	{
-		program->iddle_1.sprite_position.y -= 75;
-		program->iddle_1.sprite_position.x += 40;
-	}
+		if (ft_check_up(program))
+		{
+			program->iddle_1.sp_pos.y -= 50;
+			program->count_int.movement_count++;
+		}
 	if (key == 1)
-	{
-		ft_crouch(program);
-		return (0);
-	}
+		if (ft_check_down(program))
+		{
+			program->iddle_1.sp_pos.y += 50;
+			program->count_int.movement_count++;
+		}
+	ft_printf_count(program);
 	mlx_put_image_to_window(program->mlx, program->window.reference, program->iddle_1.sprite.reference,
-		program->iddle_1.sprite_position.x, program->iddle_1.sprite_position.y);
+		program->iddle_1.sp_pos.x, program->iddle_1.sp_pos.y);
 	return (0);
 }
 
@@ -87,22 +86,35 @@ void	ft_iddle_animation(t_program *program)
 int	ft_update(void *param)
 {
 	t_program	*program = (t_program *)param;
+	static int	FRAME;
 
 	program->frame++;
+	FRAME++;
 	ft_iddle_animation(program);
-	if (program->iddle_1.sprite_position.y < (program->window.size.y - 100))
+	/*if (FRAME == ANIMATION_FRAMES)
 	{
-		program->iddle_1.sprite_position.y += 2;
+		program->spike_trap.sp_pos.x++;
+		ft_spike_trap(program);
+	}
+	if (FRAME == ANIMATION_FRAMES * 2)
+	{
+		program->spike_trap.sp_pos.x++;
+		ft_spike_trap(program);
+		FRAME = 0;
+	}*/
+	/*if (program->iddle_1.sp_pos.y < (program->window.size.y - 100))
+	{
+		program->iddle_1.sp_pos.y += 2;
 		ft_map(program);
 		mlx_put_image_to_window(program->mlx, program->window.reference, program->iddle_1.sprite.reference,
-			program->iddle_1.sprite_position.x, program->iddle_1.sprite_position.y);
+			program->iddle_1.sp_pos.x, program->iddle_1.sp_pos.y);
 	}
-	if (program->iddle_1.sprite_position.y > (program->window.size.y - 100))
+	if (program->iddle_1.sp_pos.y > (program->window.size.y - 100))
 	{
-		program->iddle_1.sprite_position.y--;
+		program->iddle_1.sp_pos.y--;
 		ft_map(program);
 		mlx_put_image_to_window(program->mlx, program->window.reference, program->iddle_1.sprite.reference,
-			program->iddle_1.sprite_position.x, program->iddle_1.sprite_position.y);
-	}
+			program->iddle_1.sp_pos.x, program->iddle_1.sp_pos.y);
+	}*/
 	return (0);
 }

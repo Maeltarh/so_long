@@ -6,7 +6,7 @@
 /*   By: mhugueno <mhugueno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 08:56:27 by mhugueno          #+#    #+#             */
-/*   Updated: 2022/04/26 20:14:02 by mhugueno         ###   ########.fr       */
+/*   Updated: 2022/04/27 16:11:03 by mhugueno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@
 
 typedef struct	s_vector
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 }		t_vector;
 
 typedef struct	s_count_vector
 {
-	int movement_count;
-	int item_count;
+	int	movement_count;
+	int	item_count;
 }		t_count_vector;
 
 typedef struct	s_sprite
@@ -66,7 +66,7 @@ typedef struct	s_sprite_template
 	void		*mlx;
 	t_window	window;
 	t_sprite	sprite;
-	t_vector	sprite_position;
+	t_vector	sp_pos;
 }		t_sprite_template;
 
 typedef struct	s_program
@@ -75,7 +75,7 @@ typedef struct	s_program
 	void					*mlx;
 	t_window				window;
 	t_sprite				sprite;
-	t_vector				sprite_position;
+	t_vector				sp_pos;
 	t_count_vector			count_int;
 	int						frame;
 	t_sprite_template		background;
@@ -108,6 +108,9 @@ typedef struct	s_program
 	t_sprite_template		crouch;
 	t_sprite_template		fall;
 	t_sprite_template		item;
+	t_sprite_template		ladder;
+	t_sprite_template		exite_door;
+	t_sprite_template		spike_trap;
 }		t_program;
 
 void		render_hero_coord(t_program *);
@@ -138,19 +141,18 @@ t_sprite	ft_new_sprite_run_1_left(void *, char *);
 t_sprite	ft_new_sprite_run_2_left(void *, char *);
 t_sprite	ft_new_sprite_run_3_left(void *, char *);
 t_sprite	ft_new_sprite_run_4_left(void *, char *);
-t_sprite	ft_new_sprite_crouch(void *, char *);
+t_sprite	ft_new_sprite_platform(void *, char *);
 t_sprite	ft_new_sprite_fall(void *, char *);
 t_sprite	ft_new_sprite_item(void *, char *);
-t_sprite	ft_new_sprite_left_wall(void *, char *);
-t_sprite	ft_new_sprite_upper_left_wall(void *, char *);
-t_sprite	ft_new_sprite_lower_left_wall(void *, char *);
-t_sprite	ft_new_sprite_upper_wall(void *, char *);
-t_sprite	ft_new_sprite_right_wall(void *, char *);
-t_sprite	ft_new_sprite_upper_right_wall(void *, char *);
-t_sprite	ft_new_sprite_lower_right_wall(void *, char *);
-t_sprite	ft_new_sprite_lower_wall(void *, char *);
+t_sprite	ft_new_sprite_ladder(void *, char *);
+t_sprite	ft_new_sprite_exite_door(void *, char *);
+t_sprite	ft_new_sprite_spike_trap(void *, char *);
 int			ft_check_right(t_program *);
 int			ft_check_left(t_program *);
+int			ft_check_up(t_program *);
+int			ft_check_down(t_program *);
+int			ft_check_lower_right(t_program *);
+int			ft_check_lower_left(t_program *);
 int			ft_update(void *);
 int			ft_input(int , void *);
 void		ft_iddle_1(t_program *);
@@ -162,14 +164,8 @@ void		ft_iddle_6(t_program *);
 void		ft_iddle_7(t_program *);
 void		ft_iddle_8(t_program *);
 void		ft_map(t_program *);
-void		ft_left_wall(t_program *);
-void		ft_upper_left_wall(t_program *);
-void		ft_lower_left_wall(t_program *);
-void		ft_upper_wall(t_program *);
-void		ft_right_wall(t_program *);
-void		ft_upper_right_wall(t_program *);
-void		ft_lower_right_wall(t_program *);
-void		ft_lower_wall(t_program *);
+void		ft_exite_door(t_program *);
+void		ft_ladder(t_program *);
 void		ft_background(t_program *);
 void		ft_run_1_right(t_program *);
 void		ft_run_2_right(t_program *);
@@ -179,10 +175,10 @@ void		ft_run_1_left(t_program *);
 void		ft_run_2_left(t_program *);
 void		ft_run_3_left(t_program *);
 void		ft_run_4_left(t_program *);
-void		ft_crouch(t_program *);
-void		ft_sprite_template(t_program *);
+void		ft_platform(t_program *);
 void		ft_fall(t_program *);
 void		ft_item(int, t_program *);
+void		ft_spike_trap(t_program *);
 void		ft_iddle_animation(t_program *);
 int			ft_animation_run(int, t_program *);
 void		ft_animation_run_right(int, t_program *);

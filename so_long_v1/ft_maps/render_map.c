@@ -6,7 +6,7 @@
 /*   By: mhugueno <mhugueno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 11:18:53 by mhugueno          #+#    #+#             */
-/*   Updated: 2022/04/26 20:01:51 by mhugueno         ###   ########.fr       */
+/*   Updated: 2022/04/27 15:43:00 by mhugueno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,47 +39,50 @@ void	render_hero_coord(t_program *program)
 	int i;
 
 	i = 0;
-	program->map.sprite_position.x = 0;
-	program->map.sprite_position.y = 0;
+	program->map.sp_pos.x = 0;
+	program->map.sp_pos.y = 0;
 	while (program->map_str[i] != '\0')
 	{
-		while (program->map.sprite_position.x <= program->window.size.x)
+		while (program->map.sp_pos.x <= program->window.size.x)
 		{
 			if (program->map_str[i] == 80)
 			{
-				program->iddle_1.sprite_position.x = program->map.sprite_position.x;
-				program->iddle_1.sprite_position.y = program->map.sprite_position.y;
+				program->iddle_1.sp_pos.x = program->map.sp_pos.x;
+				program->iddle_1.sp_pos.y = program->map.sp_pos.y;
 			}
-			program->map.sprite_position.x += 50;
+			program->map.sp_pos.x += 50;
 			i++;
 		}
-		program->map.sprite_position.x = 0;
-		program->map.sprite_position.y += 50;
+		program->map.sp_pos.x = 0;
+		program->map.sp_pos.y += 50;
 	}
 }
 
 void	render_map(int i,t_program *program)
 {
-	render_upper_map(i, program);
-	/*while (program->map_str[i] != '\0')
+//	render_upper_map(i, program);
+	while (program->map_str[i] != '\0')
 	{
-		while (program->map.sprite_position.x <= program->window.size.x)
+		while (program->map.sp_pos.x <= program->window.size.x)
 		{
 			if (program->map_str[i] == 49)
 			{
-				mlx_put_image_to_window(program->mlx, program->window.reference, program->map.sprite.reference,
-					program->map.sprite_position.x, program->map.sprite_position.y);
+				mlx_put_image_to_window(program->mlx, program->window.reference,
+					program->map.sprite.reference, program->map.sp_pos.x,
+						program->map.sp_pos.y);
 			}
 			if (program->map_str[i] == 67)
-			{
-				program->item.sprite_position.x = program->map.sprite_position.x;
-				program->item.sprite_position.y = program->map.sprite_position.y;
 				ft_item(i, program);
-			}
-			program->map.sprite_position.x += 50;
+			if (program->map_str[i] == 50)
+				ft_platform(program);
+			if (program->map_str[i] == 51)
+				ft_ladder(program);
+			if (program->map_str[i] == 69)
+				ft_exite_door(program);
+			program->map.sp_pos.x += 50;
 			i++;
 		}
-		program->map.sprite_position.x = 0;
-		program->map.sprite_position.y += 50;
-	}*/
+		program->map.sp_pos.x = 0;
+		program->map.sp_pos.y += 50;
+	}
 }

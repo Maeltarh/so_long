@@ -5,49 +5,59 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhugueno <mhugueno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/26 19:30:03 by mhugueno          #+#    #+#             */
-/*   Updated: 2022/04/26 19:33:25 by mhugueno         ###   ########.fr       */
+/*   Created: 2022/04/19 09:22:23 by mhugueno          #+#    #+#             */
+/*   Updated: 2022/04/27 15:26:26 by mhugueno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-t_sprite	ft_new_sprite_left_wall(void *mlx, char *path)
+t_sprite	ft_new_sprite_map(void *mlx, char *path)
 {
 	t_program	program;
 
-	program.left_wall.sprite.reference = mlx_xpm_file_to_image(mlx, path, &program.left_wall.sprite.size.x, &program.left_wall.sprite.size.y);
-	program.left_wall.sprite.addr = mlx_get_data_addr(program.left_wall.sprite.reference, &program.left_wall.sprite.bits_per_pixel,
-		&program.left_wall.sprite.line_lenght, &program.left_wall.sprite.endian);
-	return (program.left_wall.sprite);
+	program.map.sprite.reference = mlx_xpm_file_to_image(mlx, path, &program.map.sprite.size.x, &program.map.sprite.size.y);
+	program.map.sprite.addr = mlx_get_data_addr(program.map.sprite.reference, &program.map.sprite.bits_per_pixel,
+		&program.map.sprite.line_lenght, &program.map.sprite.endian);
+	return (program.map.sprite);
 }
 
-t_sprite	ft_new_sprite_upper_left_wall(void *mlx, char *path)
+t_sprite	ft_new_sprite_background(void	*mlx, char *path)
 {
 	t_program	program;
 
-	program.upper_left_wall.sprite.reference = mlx_xpm_file_to_image(mlx, path, &program.upper_left_wall.sprite.size.x, &program.upper_left_wall.sprite.size.y);
-	program.upper_left_wall.sprite.addr = mlx_get_data_addr(program.upper_left_wall.sprite.reference, &program.upper_left_wall.sprite.bits_per_pixel,
-		&program.upper_left_wall.sprite.line_lenght, &program.upper_left_wall.sprite.endian);
-	return (program.upper_left_wall.sprite);
+	program.background.sprite.reference = mlx_xpm_file_to_image(mlx, path, &program.background.sprite.size.x, &program.background.sprite.size.y);
+	program.background.sprite.addr = mlx_get_data_addr(program.background.sprite.reference, &program.background.sprite.bits_per_pixel,
+		&program.background.sprite.line_lenght, &program.background.sprite.endian);
+	return (program.background.sprite);
 }
 
-t_sprite	ft_new_sprite_lower_left_wall(void *mlx, char *path)
+t_sprite	ft_new_sprite_item(void	*mlx, char *path)
 {
 	t_program	program;
 
-	program.lower_left_wall.sprite.reference = mlx_xpm_file_to_image(mlx, path, &program.lower_left_wall.sprite.size.x, &program.lower_left_wall.sprite.size.y);
-	program.lower_left_wall.sprite.addr = mlx_get_data_addr(program.lower_left_wall.sprite.reference, &program.lower_left_wall.sprite.bits_per_pixel,
-		&program.lower_left_wall.sprite.line_lenght, &program.lower_left_wall.sprite.endian);
-	return (program.lower_left_wall.sprite);
+	program.item.sprite.reference = mlx_xpm_file_to_image(mlx, path, &program.item.sprite.size.x, &program.item.sprite.size.y);
+	program.item.sprite.addr = mlx_get_data_addr(program.item.sprite.reference, &program.item.sprite.bits_per_pixel,
+		&program.item.sprite.line_lenght, &program.item.sprite.endian);
+	return (program.item.sprite);
 }
 
-t_sprite	ft_new_sprite_upper_wall(void *mlx, char *path)
+t_sprite	ft_new_sprite_platform(void	*mlx, char *path)
 {
 	t_program	program;
 
-	program.upper_wall.sprite.reference = mlx_xpm_file_to_image(mlx, path, &program.upper_wall.sprite.size.x, &program.upper_wall.sprite.size.y);
-	program.upper_wall.sprite.addr = mlx_get_data_addr(program.upper_wall.sprite.reference, &program.upper_wall.sprite.bits_per_pixel,
-		&program.upper_wall.sprite.line_lenght, &program.upper_wall.sprite.endian);
-	return (program.upper_wall.sprite);
+	program.platform.sprite.reference = mlx_xpm_file_to_image(mlx, path, &program.platform.sprite.size.x, &program.platform.sprite.size.y);
+	program.platform.sprite.addr = mlx_get_data_addr(program.platform.sprite.reference, &program.platform.sprite.bits_per_pixel,
+		&program.platform.sprite.line_lenght, &program.platform.sprite.endian);
+	return (program.platform.sprite);
+}
+
+t_sprite	ft_new_sprite_ladder(void	*mlx, char *path)
+{
+	t_program	program;
+
+	program.ladder.sprite.reference = mlx_xpm_file_to_image(mlx, path, &program.ladder.sprite.size.x, &program.ladder.sprite.size.y);
+	program.ladder.sprite.addr = mlx_get_data_addr(program.ladder.sprite.reference, &program.ladder.sprite.bits_per_pixel,
+		&program.ladder.sprite.line_lenght, &program.ladder.sprite.endian);
+	return (program.ladder.sprite);
 }

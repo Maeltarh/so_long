@@ -6,7 +6,7 @@
 /*   By: mhugueno <mhugueno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 16:49:02 by mhugueno          #+#    #+#             */
-/*   Updated: 2022/04/26 11:30:57 by mhugueno         ###   ########.fr       */
+/*   Updated: 2022/04/27 16:16:59 by mhugueno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	main(int argc, char **argv)
 		return (0);
 	program.map_str = get_map(&program, argv[1]);
 	check_map_error(&program);
+	program.count_int.movement_count = 0;
+	program.count_int.item_count = 0;
 	program.mlx = mlx_init();
 	program.window = ft_new_window(program.mlx, program.window.size.x, program.window.size.y, "Hello World!");
 	ft_map(&program);

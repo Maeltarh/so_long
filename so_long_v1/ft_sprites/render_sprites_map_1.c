@@ -6,7 +6,7 @@
 /*   By: mhugueno <mhugueno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 10:41:24 by mhugueno          #+#    #+#             */
-/*   Updated: 2022/04/28 12:07:04 by mhugueno         ###   ########.fr       */
+/*   Updated: 2022/04/28 16:38:45 by mhugueno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ft_map(t_program *program)
 	program->map.sprite = ft_new_sprite_map(program->mlx, "./sprites/wall.xpm");
 	render_map(i, program);
 	ft_spike_trap(program);
+	ft_printf_count(program);
 }
 
 void	ft_item(int i, t_program *program)

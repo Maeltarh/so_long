@@ -6,7 +6,7 @@
 /*   By: mhugueno <mhugueno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 09:30:59 by mhugueno          #+#    #+#             */
-/*   Updated: 2022/04/28 11:46:53 by mhugueno         ###   ########.fr       */
+/*   Updated: 2022/04/28 16:38:52 by mhugueno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ int	ft_update(void *param)
 {
 	t_program	*program = (t_program *)param;
 
-	ft_printf_count(program);
 	program->frame++;
 	ft_iddle_animation(program);
 	/*if (program->iddle_1.sp_pos.y < (program->window.size.y - 100))

@@ -6,7 +6,7 @@
 /*   By: mhugueno <mhugueno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 13:26:55 by mhugueno          #+#    #+#             */
-/*   Updated: 2022/04/28 12:12:36 by mhugueno         ###   ########.fr       */
+/*   Updated: 2022/04/28 16:43:28 by mhugueno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ int	ft_check_up(t_program *program)
 	int	i;
 	int	count;
 
+	if (program->iddle_1.sp_pos.x == program->spike_trap.sp_pos.x)
+	{
+		printf("\rGame over !");
+		exit (0);
+	}
 	if (((program->iddle_1.sp_pos.x - 10) % 50) != 0)
 		return (0);
 	i = 0;
@@ -37,6 +42,11 @@ int	ft_check_down(t_program *program)
 	int	i;
 	int	count;
 
+	if (program->iddle_1.sp_pos.x == program->spike_trap.sp_pos.x)
+	{
+		printf("\rGame over !");
+		exit (0);
+	}
 	if (((program->iddle_1.sp_pos.x - 10) % 50) != 0)
 		return (0);
 	i = 0;

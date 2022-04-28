@@ -6,7 +6,7 @@
 /*   By: mhugueno <mhugueno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 08:56:27 by mhugueno          #+#    #+#             */
-/*   Updated: 2022/04/27 16:11:03 by mhugueno         ###   ########.fr       */
+/*   Updated: 2022/04/28 11:12:46 by mhugueno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,12 @@ typedef struct	s_program
 	t_sprite_template		iddle_6;
 	t_sprite_template		iddle_7;
 	t_sprite_template		iddle_8;
+	t_sprite_template		climb_1;
+	t_sprite_template		climb_2;
+	t_sprite_template		climb_3;
+	t_sprite_template		climb_4;
+	t_sprite_template		climb_5;
+	t_sprite_template		climb_6;
 	t_sprite_template		run_1_right;
 	t_sprite_template		run_2_right;
 	t_sprite_template		run_3_right;
@@ -133,6 +139,12 @@ t_sprite	ft_new_sprite_iddle_7(void *, char *);
 t_sprite	ft_new_sprite_iddle_8(void *, char *);
 t_sprite	ft_new_sprite_map(void *, char *);
 t_sprite	ft_new_sprite_background(void *, char *);
+t_sprite	ft_new_sprite_climb_1(void *, char *);
+t_sprite	ft_new_sprite_climb_2(void *, char *);
+t_sprite	ft_new_sprite_climb_3(void *, char *);
+t_sprite	ft_new_sprite_climb_4(void *, char *);
+t_sprite	ft_new_sprite_climb_5(void *, char *);
+t_sprite	ft_new_sprite_climb_6(void *, char *);
 t_sprite	ft_new_sprite_run_1_right(void *, char *);
 t_sprite	ft_new_sprite_run_2_right(void *, char *);
 t_sprite	ft_new_sprite_run_3_right(void *, char *);
@@ -167,6 +179,12 @@ void		ft_map(t_program *);
 void		ft_exite_door(t_program *);
 void		ft_ladder(t_program *);
 void		ft_background(t_program *);
+void		ft_climb_1(t_program *);
+void		ft_climb_2(t_program *);
+void		ft_climb_3(t_program *);
+void		ft_climb_4(t_program *);
+void		ft_climb_5(t_program *);
+void		ft_climb_6(t_program *);
 void		ft_run_1_right(t_program *);
 void		ft_run_2_right(t_program *);
 void		ft_run_3_right(t_program *);
@@ -180,6 +198,7 @@ void		ft_fall(t_program *);
 void		ft_item(int, t_program *);
 void		ft_spike_trap(t_program *);
 void		ft_iddle_animation(t_program *);
+void		ft_iddle_animation_1(t_program *);
 int			ft_animation_run(int, t_program *);
 void		ft_animation_run_right(int, t_program *);
 void		ft_animation_run_left(int, t_program *);
@@ -187,5 +206,7 @@ void		ft_check_map_error_upper_wall(t_program *);
 void		ft_printf_count(t_program *);
 void		render_upper_map(int,t_program *);
 void		render_middle_map(int, t_program *);
+int			ft_animation_climb(int, t_program *);
+void		ft_animation_climb_1(int, t_program *);
 
 #endif

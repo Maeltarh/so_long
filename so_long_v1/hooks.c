@@ -6,7 +6,7 @@
 /*   By: mhugueno <mhugueno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 09:30:59 by mhugueno          #+#    #+#             */
-/*   Updated: 2022/04/27 16:17:36 by mhugueno         ###   ########.fr       */
+/*   Updated: 2022/04/28 11:46:53 by mhugueno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,41 +25,18 @@ int	ft_input(int key, void *param)
 		return (0);
 	}
 	ft_map(program);
-	if (key == 13)
-		if (ft_check_up(program))
-		{
-			program->iddle_1.sp_pos.y -= 50;
-			program->count_int.movement_count++;
-		}
-	if (key == 1)
-		if (ft_check_down(program))
-		{
-			program->iddle_1.sp_pos.y += 50;
-			program->count_int.movement_count++;
-		}
-	ft_printf_count(program);
+	if ((key == 13 || key == 1) && (ft_check_up(program) || ft_check_down(program)))
+	{
+		ft_animation_climb(key, program);
+		return (0);
+	}
 	mlx_put_image_to_window(program->mlx, program->window.reference, program->iddle_1.sprite.reference,
 		program->iddle_1.sp_pos.x, program->iddle_1.sp_pos.y);
 	return (0);
 }
 
-void	ft_iddle_animation(t_program *program)
+void	ft_iddle_animation_1(t_program *program)
 {
-	if (program->frame == (ANIMATION_FRAMES * 5))
-	{
-		ft_map(program);
-		ft_iddle_2(program);
-	}
-	if (program->frame == (ANIMATION_FRAMES * 6))
-	{
-		ft_map(program);
-		ft_iddle_3(program);
-	}
-	if (program->frame == (ANIMATION_FRAMES * 7))
-	{
-		ft_map(program);
-		ft_iddle_4(program);
-	}
 	if (program->frame == (ANIMATION_FRAMES * 8))
 	{
 		ft_map(program);
@@ -83,25 +60,33 @@ void	ft_iddle_animation(t_program *program)
 	}
 }
 
+void	ft_iddle_animation(t_program *program)
+{
+	if (program->frame == (ANIMATION_FRAMES * 5))
+	{
+		ft_map(program);
+		ft_iddle_2(program);
+	}
+	if (program->frame == (ANIMATION_FRAMES * 6))
+	{
+		ft_map(program);
+		ft_iddle_3(program);
+	}
+	if (program->frame == (ANIMATION_FRAMES * 7))
+	{
+		ft_map(program);
+		ft_iddle_4(program);
+	}
+	ft_iddle_animation_1(program);
+}
+
 int	ft_update(void *param)
 {
 	t_program	*program = (t_program *)param;
-	static int	FRAME;
 
+	ft_printf_count(program);
 	program->frame++;
-	FRAME++;
 	ft_iddle_animation(program);
-	/*if (FRAME == ANIMATION_FRAMES)
-	{
-		program->spike_trap.sp_pos.x++;
-		ft_spike_trap(program);
-	}
-	if (FRAME == ANIMATION_FRAMES * 2)
-	{
-		program->spike_trap.sp_pos.x++;
-		ft_spike_trap(program);
-		FRAME = 0;
-	}*/
 	/*if (program->iddle_1.sp_pos.y < (program->window.size.y - 100))
 	{
 		program->iddle_1.sp_pos.y += 2;
@@ -116,5 +101,15 @@ int	ft_update(void *param)
 		mlx_put_image_to_window(program->mlx, program->window.reference, program->iddle_1.sprite.reference,
 			program->iddle_1.sp_pos.x, program->iddle_1.sp_pos.y);
 	}*/
+	return (0);
+}
+
+int	ft_score_board(void *param)
+{
+	t_program	*program = (t_program *)param;
+	char	*str;
+
+	str = ft_itoa(program->count_int.movement_count);
+	mlx_string_put(program->mlx, program->window.reference, 10, 50, 0xccccff, str);
 	return (0);
 }

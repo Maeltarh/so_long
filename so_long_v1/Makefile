@@ -10,6 +10,8 @@ FT_SPRITES = ./ft_sprites/new_sprites_map_1.c ./ft_sprites/new_sprites_map_2.c \
 			./ft_sprites/render_sprites_run_right.c ./ft_sprites/render_sprites_run_left.c \
 			./ft_sprites/render_sprites_iddle_1.c ./ft_sprites/render_sprites_iddle_2.c \
 			./ft_sprites/new_sprites_iddle_1.c ./ft_sprites/new_sprites_iddle_2.c \
+			./ft_sprites/new_sprites_climb_1.c ./ft_sprites/new_sprites_climb_2.c \
+			./ft_sprites/render_sprites_climb_1.c ./ft_sprites/render_sprites_climb_2.c \
 
 FT_PRINTF = ./ft_printf/ft_itoa.c ./ft_printf/ft_printf.c ./ft_printf/ft_ptrcharstrhexa.c ./ft_printf/ft_putchar_fd.c \
 			./ft_printf/ft_putstr_fd.c ./ft_printf/ft_strlen.c ./ft_printf/ft_unsignedorint.c

@@ -6,7 +6,7 @@
 /*   By: mhugueno <mhugueno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 08:56:27 by mhugueno          #+#    #+#             */
-/*   Updated: 2022/04/28 11:12:46 by mhugueno         ###   ########.fr       */
+/*   Updated: 2022/04/29 10:35:36 by mhugueno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,5 +208,6 @@ void		render_upper_map(int,t_program *);
 void		render_middle_map(int, t_program *);
 int			ft_animation_climb(int, t_program *);
 void		ft_animation_climb_1(int, t_program *);
+void		ft_attack_animation(t_program *);
 
 #endif

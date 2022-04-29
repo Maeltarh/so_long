@@ -6,7 +6,7 @@
 /*   By: mhugueno <mhugueno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 10:41:24 by mhugueno          #+#    #+#             */
-/*   Updated: 2022/04/28 16:38:45 by mhugueno         ###   ########.fr       */
+/*   Updated: 2022/04/29 10:09:38 by mhugueno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void	ft_map(t_program *program)
 void	ft_item(int i, t_program *program)
 {
 	program->item.sp_pos.x = program->map.sp_pos.x;
-	program->item.sp_pos.y = program->map.sp_pos.y;
+	program->item.sp_pos.y = program->map.sp_pos.y + 35;
 	if (program->iddle_1.sp_pos.x != (program->item.sp_pos.x)||
-			program->iddle_1.sp_pos.y != program->item.sp_pos.y)
+			program->iddle_1.sp_pos.y != program->item.sp_pos.y - 35)
 	{
 		program->item.sprite = ft_new_sprite_item(program->mlx, "./sprites/item.xpm");
 		mlx_put_image_to_window(program->mlx, program->window.reference, program->item.sprite.reference,

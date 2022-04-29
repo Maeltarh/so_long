@@ -1,5 +1,5 @@
 NAME = game.out
-SRCS = main.c hooks.c window.c move_sideways.c move_up_down.c check_sideways.c ft_printf_count.c
+SRCS = main.c hooks_keyboard.c window.c move_sideways.c move_up_down.c check_sideways.c ft_printf_count.c
 OBJ = $(SRCS:.c=.o)
 
 FT_MAPS = ./ft_maps/read_map.c ./ft_maps/render_map.c ./ft_maps/error_map.c ./ft_maps/creat_map.c

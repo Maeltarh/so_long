@@ -6,7 +6,7 @@
 /*   By: mhugueno <mhugueno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 09:52:45 by mhugueno          #+#    #+#             */
-/*   Updated: 2022/04/22 12:11:15 by mhugueno         ###   ########.fr       */
+/*   Updated: 2022/04/29 13:40:46 by mhugueno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,9 @@ char	*get_map(t_program *program, char *map)
 	while (nbr > 0 && buf[0] != '\0')
 	{
 		str = ft_strjoin(str, buf);
-		nbr = read(fd, buf,(BUFFER_SIZE / BUFFER_SIZE));
+		nbr = read(fd, buf, (BUFFER_SIZE / BUFFER_SIZE));
 	}
 	free (buf);
-	ft_printf("%s", str);
 	window_size(program, str);
 	return (str);
 }

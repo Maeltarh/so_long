@@ -6,7 +6,7 @@
 /*   By: mhugueno <mhugueno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 11:18:53 by mhugueno          #+#    #+#             */
-/*   Updated: 2022/04/27 15:43:00 by mhugueno         ###   ########.fr       */
+/*   Updated: 2022/04/29 13:41:42 by mhugueno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 int	window_size(t_program *program, char *map)
 {
-	int i;
-	int x;
-	int y;
+	int	i;
+	int	x;
+	int	y;
 
 	i = 0;
 	x = 0;
 	y = 0;
 	while (map[i++] != '\n')
 		x++;
-	i  = 0;
+	i = 0;
 	while (map[i++] != '\0')
 	{
 		if (map[i] == '\n')
@@ -36,7 +36,7 @@ int	window_size(t_program *program, char *map)
 
 void	render_hero_coord(t_program *program)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	program->map.sp_pos.x = 0;
@@ -58,9 +58,8 @@ void	render_hero_coord(t_program *program)
 	}
 }
 
-void	render_map(int i,t_program *program)
+void	render_map(int i, t_program *program)
 {
-//	render_upper_map(i, program);
 	while (program->map_str[i] != '\0')
 	{
 		while (program->map.sp_pos.x <= program->window.size.x)
@@ -69,7 +68,7 @@ void	render_map(int i,t_program *program)
 			{
 				mlx_put_image_to_window(program->mlx, program->window.reference,
 					program->map.sprite.reference, program->map.sp_pos.x,
-						program->map.sp_pos.y);
+					program->map.sp_pos.y);
 			}
 			if (program->map_str[i] == 67)
 				ft_item(i, program);
